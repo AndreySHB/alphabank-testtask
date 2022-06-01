@@ -1,12 +1,11 @@
-//url относительно хоста. Можно поменять порт в application.properties и всё будет работать.
 const started_url = './';
 
 
 //Отправляет запрос для получения гифки.
-function loadResultGif() {
+function loadGif() {
     let code = $("#codes_select").val(); //получает выбранный option из select`а.
     $.ajax({
-        url: started_url + 'getgif?tag=' + code,
+        url: started_url + 'getrandomgif?currency=' + code,
         method: 'GET',
         dataType: "json",
         complete: function (data) {
@@ -27,7 +26,7 @@ function loadResultGif() {
 }
 
 //Заполняет select
-function loadForSelect() {
+function loadCurrency() {
     $.ajax({
         url: started_url + 'getcodes',
         method: 'GET',
