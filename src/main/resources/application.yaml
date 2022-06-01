@@ -1,0 +1,20 @@
+server.servlet:
+      encoding:
+        charset: UTF-8 # Charset of HTTP requests and responses. Added to the "Content-Type" header if not set explicitly
+        enabled: true # Enable http encoding support
+        force: true
+server:
+  port: 8080
+  servlet:
+    context-path: /myapp
+
+#giphy.com
+giphy.url: https://api.giphy.com/v1/gifs
+giphy.api.key: grXPZPNEtM5kqOH7DWPkr5uPFQWkXKJN
+giphy.rich: rich
+giphy.broke: broke
+
+#openexchangerates.org
+openexchangerates.url: https://openexchangerates.org/api
+openexchangerates.app.id: ec423499c7694749b310ba4116e1a34a
+openexchangerates.base: USD
