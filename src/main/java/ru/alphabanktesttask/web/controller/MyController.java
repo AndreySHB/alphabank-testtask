@@ -2,7 +2,6 @@ package ru.alphabanktesttask.web.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,6 +13,7 @@ import ru.alphabanktesttask.service.MyService;
 import java.time.LocalDate;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @EnableCaching
@@ -29,7 +29,14 @@ public class MyController {
     @Value("${giphy.less}")
     private String less;
 
-    @GetMapping("/getcodes")
+    @Value("${giphy.reserve}")
+    private String reserve;
+
+    public static final String URL_CODES="/getcodes";
+
+    public static final String URL_GIF="/getrandomgif";
+
+    @GetMapping(URL_CODES)
     public List<String> getCodes() {
         return service.getLatestRates().keySet()
                 .stream()
@@ -37,13 +44,14 @@ public class MyController {
                 .collect(Collectors.toList());
     }
 
-//    @Cacheable("gifs")
-    @GetMapping("/getrandomgif")
+    @GetMapping(URL_GIF)
     public String getRandomGif(@RequestParam String currency) {
-        boolean isHigher = service.getLatestRates().get(currency) >
-                service.getPreviousRates(LocalDate.now().minusDays(1)).get(currency);
-        String tag = isHigher ? higher : less;
+        Map<String, Double> latestRates = service.getLatestRates();
+        Map<String, Double> previousRates = service.getPreviousRates(LocalDate.now().minusDays(1));
+        Boolean isHigher = !(latestRates.containsKey(currency) && previousRates.containsKey(currency)) ?
+                null : latestRates.get(currency) > previousRates.get(currency);
+        String tag = isHigher == null ? reserve :
+                isHigher ? higher : less;
         return service.getRandomGif(tag);
-
     }
 }

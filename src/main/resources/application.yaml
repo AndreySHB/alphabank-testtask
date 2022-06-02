@@ -17,7 +17,9 @@ giphy.url: https://api.giphy.com/v1/gifs
 giphy.api.key: grXPZPNEtM5kqOH7DWPkr5uPFQWkXKJN
 giphy.higher: rich
 giphy.less: broke
+giphy.reserve: what
 
 #openexchangerates.org
 openexchangerates.url: https://openexchangerates.org/api
 openexchangerates.app.id: ec423499c7694749b310ba4116e1a34a
+openexchangerates.base: RUB

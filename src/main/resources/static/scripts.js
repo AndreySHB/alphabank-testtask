@@ -1,11 +1,9 @@
 const started_url = './';
 
-
-//Отправляет запрос для получения гифки.
 function loadGif() {
-    let code = $("#codes_select").val(); //получает выбранный option из select`а.
+    let currency = $("#codes_select").val();
     $.ajax({
-        url: started_url + 'getrandomgif?currency=' + code,
+        url: started_url + 'getrandomgif?currency=' + currency,
         method: 'GET',
         dataType: "json",
         complete: function (data) {
@@ -25,7 +23,6 @@ function loadGif() {
     })
 }
 
-//Заполняет select
 function loadCurrency() {
     $.ajax({
         url: started_url + 'getcodes',

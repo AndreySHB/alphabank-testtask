@@ -11,9 +11,9 @@ import java.time.LocalDate;
 @FeignClient(name = "exchangerate", url = "${openexchangerates.url}")
 public interface ExchangeRateClient {
 
-    @GetMapping("/latest.json?app_id="+"${openexchangerates.app.id}")
+    @GetMapping("/latest.json?app_id=" + "${openexchangerates.app.id}" + "&base=" + "${openexchangerates.base}")
     ExchangeRates getLatestRates();
 
-    @GetMapping("/historical/{ldate}.json?app_id="+"${openexchangerates.app.id}")
+    @GetMapping("/historical/{ldate}.json?app_id=" + "${openexchangerates.app.id}" + "&base=" + "${openexchangerates.base}")
     ExchangeRates getHistoricalRates(@PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate ldate);
 }
