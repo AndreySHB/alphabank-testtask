@@ -15,7 +15,10 @@ Spring Boot 2.7, Lombok, Feign
 
 **Запуск**:
 
-AlphabankTesttaskApplication.class
+Скопировать проект: git clone https://github.com/deerhunter9136/alphabank-testtask
+Открыть как Gradle проект(build.gradle файл) и собрать
+Убедиться что установлена SDK 11 или выше
+Запустить AlphabankTesttaskApplication
 
 URL:http://localhost:8080/myapp/
 
