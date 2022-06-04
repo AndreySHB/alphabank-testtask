@@ -16,13 +16,19 @@ Spring Boot 2.7, Lombok, Feign
 **Запуск**:
 
 1)Скопировать проект: git clone https://github.com/deerhunter9136/alphabank-testtask
+
 2)Открыть как Gradle проект(build.gradle файл) и собрать
+
 3)Убедиться что установлена SDK 11 или выше
+
 4)Запустить AlphabankTesttaskApplication
 
 Через Docker:
+
 1)Открыть терминал из корневой папки с проектом
+
 2)docker build -t alphatest .
+
 3)docker run -p 8080:8080 alphatest
 
 URL:http://localhost:8080/myapp/
